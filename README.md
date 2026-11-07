@@ -1,8 +1,4 @@
 # ProjetDB_Kamokwe_Zankpe
-<<<<<<< HEAD
-test
-=======
-
 MINI-PROJET 1 – BASE DE DONNÉES
 Étude du Groupe SNCF avec la méthode MERISE
 1. Présentation et périmètre du projet
@@ -93,5 +89,4 @@ Nom de la gare	Texte	100 caractères
 Ville de la gare	Texte	50 caractères
 Identifiant de l'employé	Entier	10 chiffres
 Nom de la fonction de l'employé	Texte	50 caractères
-Remarque : les données présentées sont des données brutes destinées à préparer les étapes suivantes de la méthode MERISE. La transformation de ces données en entités, associations, attributs, clés et tables sera réalisée dans les étapes ultérieures du projet.
->>>>>>> 628029af5b6dcc727764c0c3e1bb1a3d3c19409d
+Remarque : les données présentées sont des données brutes destinées à préparer les étapes suivantes de la méthode MERISE. La transformation de ces données en entités, associations, attributs, clés et tables sera réalisée dans les étapes ultérieures du projet
