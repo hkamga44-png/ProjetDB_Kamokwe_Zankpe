@@ -1,0 +1,4 @@
+Prompt utilise comme base de generation des donnees synthetiques :
+« Tu es assistant SQL. Pour une base MySQL 8 de gestion ferroviaire SNCF fictive, genere des INSERT INTO pour les 14 tables definies par le schema 1_creation.sql. Respecte strictement les cles primaires et etrangeres, les types DATE/TIME/DATETIME, les CHECK de 2_contraintes.sql, les cardinalites et l ordre de dependance. Utilise uniquement des personnes fictives, des adresses en exemple.fr et des trajets inventes. Fournis un script executable, avec au moins 30 voyageurs, billets, reservations, paiements, places et trajets, ainsi que des donnees coherentes pour les autres tables. N ajoute aucune table ou colonne. »
+
+Note : texte de prompt propose pour le livrable. Le script joint a ete construit et controle par generation de code, pas obtenu par une execution documentee de ce prompt dans une autre session.

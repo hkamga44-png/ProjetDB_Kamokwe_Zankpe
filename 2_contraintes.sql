@@ -1,0 +1,11 @@
+ALTER TABLE Voyageur_ ADD CONSTRAINT ck_voyageur_email CHECK (email IS NULL OR email LIKE '%_@_%._%');
+ALTER TABLE Voyageur_ ADD CONSTRAINT ck_voyageur_naissance CHECK (date_naissance IS NULL OR date_naissance >= '1900-01-01');
+ALTER TABLE TYPE_TRAIN ADD CONSTRAINT ck_reservation_obligatoire CHECK (reservation_obligatoire IN ('Oui','Non'));
+ALTER TABLE INCIDENT ADD CONSTRAINT ck_retard CHECK (duree_retard IS NULL OR duree_retard >= 0);
+ALTER TABLE BILLET ADD CONSTRAINT ck_prix CHECK (prix IS NOT NULL AND prix >= 0);
+ALTER TABLE BILLET ADD CONSTRAINT ck_classe CHECK (classe_ IN ('1ere','2nde'));
+ALTER TABLE BILLET ADD CONSTRAINT ck_statut CHECK (statut IN ('Valide','Annule','Utilise'));
+ALTER TABLE PAIEMENT ADD CONSTRAINT ck_montant CHECK (montant IS NOT NULL AND montant >= 0);
+ALTER TABLE PAIEMENT ADD CONSTRAINT ck_mode CHECK (mode_paiement_ IN ('Carte','Especes','Virement'));
+ALTER TABLE PLACE ADD CONSTRAINT ck_num_place CHECK (num_place > 0);
+ALTER TABLE CORRESPONDANCE ADD CONSTRAINT ck_duree_correspondance CHECK (`durée_min_correspondance` IS NULL OR `durée_min_correspondance` >= 0);
