@@ -7,9 +7,11 @@
 
 ### 1. Présentation et périmètre du projet
 
-Tu travailles dans le domaine du transport ferroviaire et de la mobilité. Ton entreprise est le Groupe SNCF, acteur français du transport ferroviaire et de la mobilité. Pour ce projet, le système d'information porte principalement sur la gestion des activités liées au transport ferroviaire de voyageurs, tout en intégrant plusieurs éléments du fonctionnement de l'entreprise : voyageurs, billets, réservations, paiements, trains, trajets, gares, personnel, retards, incidents et correspondances.
+Dans le cadre de notre mini-projet de bases de données, nous avons choisi d'étudier le Groupe SNCF, une entreprise française spécialisée dans le transport ferroviaire et la mobilité.
 
-La SNCF regroupe différentes activités liées au transport ferroviaire, notamment les services de transport de voyageurs, la gestion des trajets et des horaires, la vente et la distribution de billets, l'information des voyageurs, la conduite et le contrôle à bord ainsi que la maintenance du matériel roulant. Le présent projet constitue un modèle pédagogique réaliste et ne prétend pas reproduire le système informatique interne de la SNCF.
+Notre objectif est de concevoir une base de données pour représenter plusieurs activités liées au transport de voyageurs : les réservations, les billets, les paiements, les trains, les trajets, les gares et le personnel. Nous avons aussi pris en compte les places, les correspondances et les incidents.
+
+Ce travail nous permet de mettre en pratique la méthode MERISE, de l'analyse des besoins à la création et à l'interrogation d'une base MySQL. Il s'agit d'un projet pédagogique, et non d'une reproduction du système informatique réel de la SNCF.
 
 Les données étudiées concernent notamment :
 
@@ -113,13 +115,13 @@ Le dictionnaire ci-dessous regroupe les données utiles à l'analyse. Il ne cons
 
 ## Partie 2 — Implémentation et interrogation sous MySQL
 
-**Binôme :** ZANKPE John Fisher Vinamblo et KAMOKWE (prénom à compléter)  
+**Binôme :** ZANKPE John Fisher Vinamblo et KAMOKWE (prénom à renseigner avant le rendu)  
 **Cours :** TI503N — Bases de données 1  
 **SGBD :** MySQL 8 / MySQL Workbench
 
 La partie 2 met en œuvre la modélisation réalisée avec MERISE : passage au MLD, création des tables SQL, ajout de contraintes, insertion de données fictives et interrogation de la base.
 
-**Évolution du modèle :** le dictionnaire de la partie 1 décrit le périmètre envisagé initialement. Le modèle SQL final est plus restreint : certains attributs (adresse du voyageur, capacité et modèle du train, date d'arrivée distincte, statut de réservation, etc.) n'ont pas été retenus. L'identifiant du voyageur est notamment implémenté en `VARCHAR(50)`, et non en entier. Les règles de gestion de la partie 1 constituent donc des objectifs de conception, dont certains ne sont pas matérialisés par les tables actuelles. En particulier, les incidents sont reliés aux types de train, et les affectations relient les employés aux types de train et aux fonctions, plutôt que directement aux trajets.
+**Évolution du modèle :** au départ, notre dictionnaire de données contenait plus d'informations que celles finalement utilisées dans les tables SQL. Nous n'avons pas conservé certains champs, comme l'adresse du voyageur, le modèle et la capacité du train ou le statut de la réservation. Nous avons également utilisé un identifiant texte (`VARCHAR(50)`) pour les voyageurs. Dans notre base actuelle, les incidents sont associés aux types de train et les affectations aux employés, types de train et fonctions. Ces choix expliquent certaines différences avec les règles de gestion envisagées dans la première partie.
 
 ### 1. Modèle logique de données (MLD)
 
