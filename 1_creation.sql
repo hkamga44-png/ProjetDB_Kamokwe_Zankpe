@@ -1,7 +1,7 @@
 CREATE TABLE Voyageur_ (
- id_voyageur_ VARCHAR(50) PRIMARY KEY,
- nom VARCHAR(50), prenom VARCHAR(50), date_naissance DATE,
- email VARCHAR(50), telephone VARCHAR(50)
+ id_voyageur_ VARCHAR(60) PRIMARY KEY,
+ nom VARCHAR(60), prenom VARCHAR(60), date_naissance DATE,
+ email VARCHAR(60), telephone VARCHAR(20)
 ) ENGINE=InnoDB;
 
 CREATE TABLE TYPE_TRAIN (
