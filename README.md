@@ -115,7 +115,7 @@ Le dictionnaire ci-dessous regroupe les données utiles à l'analyse. Il ne cons
 
 ## Partie 2 — Implémentation et interrogation sous MySQL
 
-**Binôme :** ZANKPE John Fisher Vinamblo et KAMOKWE 
+**Binôme :** ZANKPE John Fisher Vinamblo et KAMOKWE (nom et prenom a renseigner) 
 **Cours :** TI503N — Bases de données 1  
 **SGBD :** MySQL 8 / MySQL Workbench
 
