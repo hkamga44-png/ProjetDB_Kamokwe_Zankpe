@@ -1,6 +1,4 @@
--- TI503N - Scenario : agent du service commercial et exploitation SNCF
--- Objectif : analyser ventes, voyageurs, trajets, places et incidents.
--- 5 selections/projections ; 5 agregations ; 5 jointures ; 5 sous-requetes.
+
 -- Q01 : Selection des voyageurs dont le nom commence par Nom
 SELECT * FROM Voyageur_ WHERE nom LIKE 'Nom%' ORDER BY nom;
 
