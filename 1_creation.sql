@@ -1,0 +1,107 @@
+CREATE TABLE Voyageur_ (
+ id_voyageur_ VARCHAR(50) PRIMARY KEY,
+ nom VARCHAR(50), prenom VARCHAR(50), date_naissance DATE,
+ email VARCHAR(50), telephone VARCHAR(50)
+) ENGINE=InnoDB;
+
+CREATE TABLE TYPE_TRAIN (
+ code_type INT PRIMARY KEY, libelle VARCHAR(50),
+ reservation_obligatoire VARCHAR(50)
+) ENGINE=InnoDB;
+
+CREATE TABLE FONCTION (
+ code_fonction INT PRIMARY KEY, `intitulé` VARCHAR(50)
+) ENGINE=InnoDB;
+
+CREATE TABLE GARE (
+ code_gare INT PRIMARY KEY, nom_gare VARCHAR(50), ville VARCHAR(50)
+) ENGINE=InnoDB;
+
+CREATE TABLE INCIDENT (
+ num_incident INT PRIMARY KEY, type_incident VARCHAR(50), duree_retard INT,
+ code_type INT NOT NULL,
+ FOREIGN KEY (code_type) REFERENCES TYPE_TRAIN(code_type)
+ ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE TRAIN (
+ num_train BIGINT PRIMARY KEY, code_type INT NOT NULL,
+ FOREIGN KEY (code_type) REFERENCES TYPE_TRAIN(code_type)
+ ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE EMPLOYER (
+ matricule INT PRIMARY KEY, prenom VARCHAR(50), nom VARCHAR(50),
+ date_embauche DATE, code_fonction INT NOT NULL,
+ FOREIGN KEY (code_fonction) REFERENCES FONCTION(code_fonction)
+ ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE TRAJET (
+ num_trajet INT PRIMARY KEY, heure_depart TIME, `heure_arrivée` TIME,
+ date_trajet DATE, num_train BIGINT NOT NULL,
+ code_gare INT NOT NULL, code_gare_1 INT NOT NULL,
+ FOREIGN KEY (num_train) REFERENCES TRAIN(num_train)
+ ON UPDATE CASCADE ON DELETE RESTRICT,
+ FOREIGN KEY (code_gare) REFERENCES GARE(code_gare)
+ ON UPDATE CASCADE ON DELETE RESTRICT,
+ FOREIGN KEY (code_gare_1) REFERENCES GARE(code_gare)
+ ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE BILLET (
+ num_billet_ BIGINT PRIMARY KEY, date_achat DATETIME,
+ prix DECIMAL(10,2), statut VARCHAR(50), classe_ VARCHAR(50),
+ id_voyageur_ VARCHAR(50) NOT NULL, num_trajet INT NOT NULL,
+ FOREIGN KEY (id_voyageur_) REFERENCES Voyageur_(id_voyageur_)
+ ON UPDATE CASCADE ON DELETE RESTRICT,
+ FOREIGN KEY (num_trajet) REFERENCES TRAJET(num_trajet)
+ ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB;
+
+CREATE TABLE PAIEMENT (
+ num_paiement BIGINT PRIMARY KEY, montant DECIMAL(10,2),
+ date_paiement_ DATETIME, mode_paiement_ VARCHAR(50),
+ num_billet_ BIGINT NOT NULL,
+ FOREIGN KEY (num_billet_) REFERENCES BILLET(num_billet_)
+ ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE RESERVATION (
+ num_reservation BIGINT PRIMARY KEY, date_reservation_ DATETIME,
+ num_billet_ BIGINT NOT NULL UNIQUE,
+ FOREIGN KEY (num_billet_) REFERENCES BILLET(num_billet_)
+ ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE PLACE (
+ num_train BIGINT NOT NULL, num_voiture_ VARCHAR(50) NOT NULL,
+ num_place BIGINT NOT NULL, num_reservation BIGINT NOT NULL UNIQUE,
+ PRIMARY KEY (num_train, num_voiture_, num_place),
+ FOREIGN KEY (num_train) REFERENCES TRAIN(num_train)
+ ON UPDATE CASCADE ON DELETE RESTRICT,
+ FOREIGN KEY (num_reservation) REFERENCES RESERVATION(num_reservation)
+ ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE AFFECTATION (
+ matricule INT NOT NULL, code_type INT NOT NULL, code_fonction INT NOT NULL,
+ PRIMARY KEY (matricule, code_type, code_fonction),
+ FOREIGN KEY (matricule) REFERENCES EMPLOYER(matricule)
+ ON UPDATE CASCADE ON DELETE CASCADE,
+ FOREIGN KEY (code_type) REFERENCES TYPE_TRAIN(code_type)
+ ON UPDATE CASCADE ON DELETE CASCADE,
+ FOREIGN KEY (code_fonction) REFERENCES FONCTION(code_fonction)
+ ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE CORRESPONDANCE (
+ num_trajet_trajet_precedent_ INT NOT NULL,
+ num_trajet_trajet_suivant_ INT NOT NULL,
+ `durée_min_correspondance` INT,
+ PRIMARY KEY (num_trajet_trajet_precedent_, num_trajet_trajet_suivant_),
+ FOREIGN KEY (num_trajet_trajet_precedent_) REFERENCES TRAJET(num_trajet)
+ ON UPDATE CASCADE ON DELETE CASCADE,
+ FOREIGN KEY (num_trajet_trajet_suivant_) REFERENCES TRAJET(num_trajet)
+ ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
