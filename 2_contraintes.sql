@@ -9,3 +9,5 @@ ALTER TABLE PAIEMENT ADD CONSTRAINT ck_montant CHECK (montant IS NOT NULL AND mo
 ALTER TABLE PAIEMENT ADD CONSTRAINT ck_mode CHECK (mode_paiement_ IN ('Carte','Especes','Virement'));
 ALTER TABLE PLACE ADD CONSTRAINT ck_num_place CHECK (num_place > 0);
 ALTER TABLE CORRESPONDANCE ADD CONSTRAINT ck_duree_correspondance CHECK (`durée_min_correspondance` IS NULL OR `durée_min_correspondance` >= 0);
+ALTER TABLE Voyageur_ ADD CONSTRAINT ck_tel_non_vide CHECK (telephone IS NULL OR telephone <> '');
+ALTER TABLE TRAJET ADD CONSTRAINT ck_heure_trajet CHECK (heure_arrivee > heure_depart);
