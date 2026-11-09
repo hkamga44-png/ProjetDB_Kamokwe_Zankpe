@@ -125,7 +125,7 @@ La partie 2 met en œuvre la modélisation réalisée avec MERISE : passage au M
 
 ### 1. Modèle logique de données (MLD)
 
-Notation : **PK** = clé primaire ; **FK** = clé étrangère. Les noms sont conservés tels qu'ils figurent dans les scripts SQL.
+Notation : **PK** = clé primaire (primary key); **FK** = clé étrangère ( foreing key). Les noms sont conservés tels qu'ils figurent dans les scripts SQL.
 
 ```text
 Voyageur_(id_voyageur_ PK, nom, prenom, date_naissance, email, telephone)
